@@ -301,6 +301,8 @@ function getSecondarySelector(): TrySelect {
       return null;
 
     let impact = state.onLiftImpact;
+    console.log(impact)
+    console.log(ownProps)
 
     if(impact.displaced.all.length < state.impact.displaced.all.length)
       impact = state.impact;
@@ -318,11 +320,9 @@ function getSecondarySelector(): TrySelect {
         const prevDraggableDimensions = dims[prevDraggableId].client.borderBox;
 
         if (prevDraggableDimensions.y !== ownDimensions.y) {
-          if (!impact?.displaced?.visible[ownProps.draggableId].shouldAnimate) {
-            return {
-              x: ownDimensions.x - prevDraggableDimensions.x,
-              y: ownDimensions.y - prevDraggableDimensions.y,
-            };
+          return {
+            x: prevDraggableDimensions.x,
+            y: prevDraggableDimensions.y,
           }
         }
       }
